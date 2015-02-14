@@ -1,0 +1,31 @@
+# yahoo.schema.yaml
+#
+
+schema:
+  schema_id: yahoo
+  name: yahoo
+  version: "4"
+
+engine:
+  processors:
+    - speller
+    - selector
+    - express_editor
+  segmentors:
+    - abc_segmentor
+    - fallback_segmentor
+  translators:
+    - table_translator
+
+translator:
+  dictionary: yahoo
+  enable_completion: false
+  enable_user_dict: false
+  enable_sentence: false
+  preedit_format:
+    - xform/^([a-z]*)$/\U$1\E/
+    #- xform/^([a-z]*)$/$1｜\U$1\E/
+    - "xlit|ABCDEFGHIJKLMNOPQRSTUVWXYZ|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
+  comment_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz~|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符～|"
+
